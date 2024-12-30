@@ -1,5 +1,27 @@
 # Outbound Call Campaign Platform
 
+## Public Website
+
+### Landing Page
+- Hero section designed to capture attention and communicate value proposition
+- Clear explanation of platform functionality and benefits
+- Prominent call-to-action for registration
+- Highlight of 20 free minutes offer for new users
+- Customer testimonials section
+- Cost comparison calculator showing savings vs. human cold callers
+- Clear value proposition for 10-customer campaign scenario
+
+### Navigation
+Top header menu items:
+- Home
+- Services
+- Use Cases
+- About
+- Contact
+
+### Structure
+Separate `/web` folder for public website components and pages, distinct from the `/app` folder for the main application
+
 ## Project Overview
 A SaaS platform enabling businesses to manage outbound call campaigns using AI agents. The system allows users to create campaigns, manage contacts, configure AI agents, and execute automated calls while tracking usage and billing.
 
@@ -151,18 +173,75 @@ A SaaS platform enabling businesses to manage outbound call campaigns using AI a
 
 ## Project Structure
 ```
-├── app/
-│   ├── components/
+├── assets/               # Global assets (images, styles, fonts)
+│   ├── css/
+│   └── images/
+├── components/          # Reusable components
+│   ├── shared/         # Shared across web and app
+│   ├── app/           # Application-specific components
 │   │   ├── dashboard/
 │   │   ├── campaigns/
 │   │   ├── contacts/
 │   │   ├── agents/
+│   │   └── billing/
+│   └── web/           # Public website components
+├── layouts/            # Layout components
+│   ├── app.vue        # Application layout
+│   └── web.vue        # Public website layout
+├── pages/             # Route pages
+│   ├── app/          # Application pages
+│   │   ├── dashboard/
+│   │   │   └── index.vue
+│   │   ├── campaigns/
+│   │   │   ├── index.vue
+│   │   │   ├── new.vue
+│   │   │   └── [id].vue
+│   │   ├── contacts/
+│   │   │   ├── index.vue
+│   │   │   └── [id].vue
+│   │   ├── agents/
+│   │   │   ├── index.vue
+│   │   │   └── [id].vue
 │   │   ├── billing/
-│   │   └── shared/
-│   ├── layouts/
-│   ├── pages/
-│   ├── stores/
-│   └── utils/
+│   │   │   └── index.vue
+│   │   └── profile/
+│   │       └── index.vue
+│   ├── index.vue
+│   ├── login.vue
+│   ├── register.vue
+│   ├── services.vue
+│   ├── use-cases.vue
+│   ├── about.vue
+│   └── contact.vue
+├── middleware/         # Route middleware
+│   ├── auth.ts        # Authentication middleware
+│   └── billing.ts     # Billing status checks
+├── composables/        # Composable functions
+│   ├── useAuth.ts
+│   ├── useCampaign.ts
+│   └── useAgent.ts
+├── stores/            # Pinia stores
+│   ├── auth.ts
+│   ├── campaign.ts
+│   └── billing.ts
+├── services/          # Business logic and API calls
+│   ├── api/          # API clients
+│   │   ├── supabase.ts
+│   │   ├── stripe.ts
+│   │   └── vapi.ts
+│   └── business/     # Business logic
+│       ├── campaign.ts
+│       ├── agent.ts
+│       └── billing.ts
+├── utils/             # Utility functions
+│   ├── formatting.ts
+│   └── validation.ts
+├── types/             # TypeScript types
+│   ├── models.ts
+│   └── api.ts
+├── public/            # Static files
+├── server/            # Server middleware (if needed)
+└── tests/             # Test files
 ├── business/
 │   ├── services/
 │   ├── models/

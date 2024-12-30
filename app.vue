@@ -1,6 +1,8 @@
 <script setup>
 // Import the dashboard layout
-import DashboardLayout from '~/layouts/dashboard.vue'
+import DashboardLayout from './app/layouts/dashboard.vue'
+// Import the landing page
+import LandingPage from './web/pages/index.vue'
 
 // Define the layout to use based on route
 const route = useRoute()
@@ -11,7 +13,7 @@ const layout = computed(() => {
 
 <template>
   <NuxtLayout :name="layout">
-    <NuxtPage />
+    <component :is="route.path === '/' ? LandingPage : NuxtPage" />
   </NuxtLayout>
 </template>
 
