@@ -1,19 +1,9 @@
-<script setup>
-// Import the dashboard layout
-import DashboardLayout from './app/layouts/dashboard.vue'
-// Import the landing page
-import LandingPage from './web/pages/index.vue'
-
-// Define the layout to use based on route
-const route = useRoute()
-const layout = computed(() => {
-  return route.path.startsWith('/dashboard') ? DashboardLayout : 'default'
-})
+<script setup lang="ts">
 </script>
 
 <template>
-  <NuxtLayout :name="layout">
-    <component :is="route.path === '/' ? LandingPage : NuxtPage" />
+  <NuxtLayout>
+    <NuxtPage />
   </NuxtLayout>
 </template>
 
